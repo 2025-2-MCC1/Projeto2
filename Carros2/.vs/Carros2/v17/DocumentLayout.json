@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\25028270\\Documents\\GitHub\\Projeto2\\Carros2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A00770CA-93AF-9827-94C6-00094CDAD6E7}|Assembly-CSharp.csproj|c:\\users\\25028270\\documents\\github\\projeto2\\carros2\\assets\\scripts\\collidplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A00770CA-93AF-9827-94C6-00094CDAD6E7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\collidplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Collidplayer.cs",
+              "DocumentMoniker": "C:\\Users\\25028270\\Documents\\GitHub\\Projeto2\\Carros2\\Assets\\scripts\\Collidplayer.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\Collidplayer.cs",
+              "ToolTip": "C:\\Users\\25028270\\Documents\\GitHub\\Projeto2\\Carros2\\Assets\\scripts\\Collidplayer.cs",
+              "RelativeToolTip": "Assets\\scripts\\Collidplayer.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwA4AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T13:16:45.643Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
