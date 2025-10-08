@@ -132,7 +132,11 @@ GameObject:
   - component: {fileID: 13250673}
   - component: {fileID: 13250672}
   m_Layer: 0
+<<<<<<< HEAD
   m_Name: Pilastra esquerda 2
+=======
+  m_Name: Parede
+>>>>>>> 2bd2654e285320c0c8aa2ea8a2ea025f0df695eb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3002,6 +3006,10 @@ GameObject:
   - component: {fileID: 798753643}
   - component: {fileID: 798753644}
   - component: {fileID: 798753645}
+<<<<<<< HEAD
+=======
+  - component: {fileID: 798753646}
+>>>>>>> 2bd2654e285320c0c8aa2ea8a2ea025f0df695eb
   m_Layer: 0
   m_Name: 'Carro '
   m_TagString: Untagged
@@ -3104,7 +3112,7 @@ Transform:
   m_GameObject: {fileID: 798753637}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.08, y: 0.5, z: -5.82}
+  m_LocalPosition: {x: 4.94, y: 0.5, z: -5.82}
   m_LocalScale: {x: 1.2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3158,15 +3166,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 798753637}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 85fadb63503192b42b78d47498c2c679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &807879070
 GameObject:
+=======
+  m_Script: {fileID: 11500000, guid: 4eb0a7decf012a24493b8d7b0aee954c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &798753646
+MonoBehaviour:
+>>>>>>> 2bd2654e285320c0c8aa2ea8a2ea025f0df695eb
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   serializedVersion: 6
   m_Component:
   - component: {fileID: 807879071}
@@ -3269,6 +3286,14 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807879070}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+=======
+  m_GameObject: {fileID: 798753637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb0a7decf012a24493b8d7b0aee954c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> 2bd2654e285320c0c8aa2ea8a2ea025f0df695eb
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3318,7 +3343,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &856296178
+=======
+--- !u!1 &869138581
+>>>>>>> 2bd2654e285320c0c8aa2ea8a2ea025f0df695eb
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3326,28 +3355,125 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 856296179}
   - component: {fileID: 856296182}
   - component: {fileID: 856296181}
   - component: {fileID: 856296180}
   m_Layer: 0
   m_Name: Pilastra cima direita 5
+=======
+  - component: {fileID: 869138585}
+  - component: {fileID: 869138584}
+  - component: {fileID: 869138583}
+  - component: {fileID: 869138582}
+  m_Layer: 0
+  m_Name: Cylinder
+>>>>>>> 2bd2654e285320c0c8aa2ea8a2ea025f0df695eb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!4 &856296179
+=======
+--- !u!136 &869138582
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869138581}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!23 &869138583
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869138581}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &869138584
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869138581}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &869138585
+>>>>>>> 2bd2654e285320c0c8aa2ea8a2ea025f0df695eb
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 856296178}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.9350071, y: -2.280786, z: 34.412186}
   m_LocalScale: {x: 0.3, y: 0.4, z: 10.1}
+=======
+  m_GameObject: {fileID: 869138581}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.511209, y: -11.714714, z: 21.246136}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+>>>>>>> 2bd2654e285320c0c8aa2ea8a2ea025f0df695eb
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 860565117}
@@ -4215,7 +4341,7 @@ GameObject:
   - component: {fileID: 1115065810}
   - component: {fileID: 1115065809}
   m_Layer: 0
-  m_Name: Pilastra cima esquerda 1
+  m_Name: Parede
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6245,7 +6371,18 @@ SceneRoots:
   - {fileID: 1106897066}
   - {fileID: 539329595}
   - {fileID: 798753642}
+<<<<<<< HEAD
   - {fileID: 656822022}
   - {fileID: 715795478}
   - {fileID: 1822231011}
   - {fileID: 1918160683}
+=======
+  - {fileID: 1479573958}
+  - {fileID: 1115065812}
+  - {fileID: 221792637}
+  - {fileID: 692320513}
+  - {fileID: 2099046424}
+  - {fileID: 1461916750}
+  - {fileID: 981913630}
+  - {fileID: 869138585}
+>>>>>>> 2bd2654e285320c0c8aa2ea8a2ea025f0df695eb
