@@ -1,45 +1,28 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PistaInfinita : MonoBehaviour
 {
-    public Transform[] segmentosPista; // Segmentos da pista (mínimo 2)
-    public float velocidade = 5f;
-    public float comprimentoSegmento = 50f;
+    public float speed = 5f;
+    public float comprimentoPista = 50f;
 
     void Update()
     {
-        for (int i = 0; i < segmentosPista.Length; i++)
+        // Move para trÃ¡s (igual ao seu cÃ³digo da grama)
+        transform.Translate(Vector3.forward * -speed * Time.deltaTime);
+
+        // Verifica se a pista jÃ¡ passou completamente
+        if (transform.position.z <= -comprimentoPista)
         {
-            Transform segmento = segmentosPista[i];
-
-            // Move o segmento para trás
-            segmento.Translate(Vector3.back * velocidade * Time.deltaTime);
-
-            // Se o segmento saiu da tela (atrás do jogador)
-            if (segmento.position.z <= -comprimentoSegmento)
-            {
-                // Encontrar o segmento mais à frente (maior valor de Z)
-                Transform segmentoMaisADireita = ObterSegmentoMaisAFrente();
-
-                // Reposicionar o segmento atrás do mais à frente
-                float novaPosZ = segmentoMaisADireita.position.z + comprimentoSegmento;
-                segmento.position = new Vector3(segmento.position.x, segmento.position.y, novaPosZ);
-            }
+            // Reposiciona a pista
+            ReposicionarPista();
         }
     }
 
-    Transform ObterSegmentoMaisAFrente()
+    void ReposicionarPista()
     {
-        Transform maisAFrente = segmentosPista[0];
-
-        foreach (Transform seg in segmentosPista)
-        {
-            if (seg.position.z > maisAFrente.position.z)
-            {
-                maisAFrente = seg;
-            }
-        }
-
-        return maisAFrente;
+        // Move a pista de volta para a posiÃ§Ã£o inicial
+        Vector3 novaPosicao = transform.position;
+        novaPosicao.z += comprimentoPista * 2f;
+        transform.position = novaPosicao;
     }
 }
