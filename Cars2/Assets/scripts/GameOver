@@ -1,0 +1,15 @@
+using UnityEngine;
+using System.Collections;   
+using UnityEngine.UI;
+
+
+public class GameOverScript : MonoBehaviour
+{
+    public Text pointsText;
+    public void RestartGame()
+    {
+        gameObject.SetActive(true);
+        pointsText.text = score.ToString() + " POINTS";
+    }
+
+}
