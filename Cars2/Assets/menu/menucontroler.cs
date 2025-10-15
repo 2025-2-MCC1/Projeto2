@@ -4,13 +4,15 @@ using UnityEngine.Video;
 public class menucontroler : MonoBehaviour 
 {
     public VideoPlayer videoPlayer;
-    public GameObject menuopcoes;
+    public GameObject menuopcoes, rawImage;
+    private Animator animatorRawImage;
     public GameObject titulo;
     public GameObject video; 
 
     void Start()
     {
-        
+        rawImage.SetActive(false);
+        animatorRawImage = rawImage.GetComponent<Animator>();
     }
 
     
@@ -18,6 +20,8 @@ public class menucontroler : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
+            rawImage.SetActive(true);
+            animatorRawImage.SetTrigger("FadeIn"); 
             videoPlayer.Play();
             menuopcoes.SetActive(true);
             titulo.SetActive(false);
