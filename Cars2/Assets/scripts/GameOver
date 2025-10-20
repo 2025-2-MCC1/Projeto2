@@ -1,0 +1,30 @@
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Necessário para recarregar a cena
+
+public class GameOverScreen : MonoBehaviour
+{
+    public GameObject gameOverUI; // O Painel/Canvas de Game Over
+
+    // Função que será chamada pelo GameController
+    public void Show()
+    {
+        gameOverUI.SetActive(true); // Ativa o painel de Game Over
+    }
+
+    // Função para ser chamada no OnClick() de um botão "Tentar Novamente" no Unity Inspector
+    public void RestartButton()
+    {
+        // 1. Reseta o tempo do jogo para o normal
+        Time.timeScale = 1f;
+
+        // 2. Recarrega a cena atual
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    //  Função para ser chamada no OnClick() de um botão "Sair" ou "Menu Principal"
+    public void QuitGameButton()
+    {
+        Application.Quit();
+        Debug.Log("Saindo do Jogo..."); // Mostra no editor, pois Application.Quit() só funciona em builds
+    }
