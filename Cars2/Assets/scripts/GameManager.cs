@@ -1,59 +1,50 @@
+
+
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro; // ADICIONADO para compatibilidade com TextMeshPro
 
 public class GameManager : MonoBehaviour
 {
-    private float score;
+    public static GameManager Instance { get; private set; }
+
+    [Header("UI")]
+    public GameObject gameOverPanel; // arraste o painel de Game Over aqui
+
+    [HideInInspector]
     public bool isGameOver = false;
 
-    // ----- REFERÊNCIAS DA UI (ARRASTE NO INSPECTOR) -----
-    public TextMeshProUGUI scoreText; // ALTERADO para aceitar TextMeshPro
-    public GameObject gameOverPanel;
-
-    // Referência ao script do jogador para desativá-lo no fim do jogo.
-    public MonoBehaviour playerControllerScript;
-
-    void Start()
+    private void Awake()
     {
-        // Garante que o jogo está rodando e o painel de game over está escondido
-        Time.timeScale = 1;
-        gameOverPanel.SetActive(false);
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        Instance = this;
+        //DontDestroyOnLoad(gameObject); // opcional se quiser manter entre cenas
+    }
+
+    private void Start()
+    {
+        if (gameOverPanel != null) gameOverPanel.SetActive(false);
+        Time.timeScale = 1f;
         isGameOver = false;
-        score = 0f;
     }
 
-    void Update()
-    {
-        // Se o jogo não acabou, aumenta a pontuação com base no tempo
-        if (!isGameOver)
-        {
-            score += Time.deltaTime * 10;
-            scoreText.text = "PONTOS: " + Mathf.FloorToInt(score).ToString();
-        }
-    }
-
-    // Função chamada quando o jogador colide com um obstáculo
     public void GameOver()
     {
-        if (isGameOver) return; // Evita que a função seja chamada várias vezes
-
+        if (isGameOver) return;
         isGameOver = true;
-        gameOverPanel.SetActive(true); // Mostra a tela de "Fim de Jogo"
-
-        // Desativa o controle do jogador para que ele não possa mais se mover
-        if (playerControllerScript != null)
-        {
-            playerControllerScript.enabled = false;
-        }
+        Time.timeScale = 0f; // pausa o jogo
+        if (gameOverPanel != null) gameOverPanel.SetActive(true);
     }
 
-    // Função para ser usada pelo botão de "Jogar Novamente"
-    public void RestartGame()
+    // chamadas por botões UI:
+    public void Retry()
     {
-        // Recarrega a cena atual, reiniciando o jogo
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void MainMenu(string menuSceneName) // ou int buildIndex
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(menuSceneName);
     }
 }
-
