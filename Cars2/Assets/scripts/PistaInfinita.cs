@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 public class PistaInfinita : MonoBehaviour
 {
-    public Transform player;               // Referência ao jogador
+    public Transform player;
 
-    // Referências públicas para seus prefabs (arraste no Inspector)
     public GameObject Bloco1_2;
     public GameObject Bloco3_4;
     public GameObject Bloco5_6;
@@ -13,17 +12,16 @@ public class PistaInfinita : MonoBehaviour
     public GameObject Bloco9_10;
     public GameObject Bloco11_12;
 
-    public float spawnDistance = 50f;     // Distância para spawnar o próximo bloco
-    public int initialBlocks = 3;         // Quantidade de blocos para começar
-    public float blockLength = 30f;       // Tamanho do bloco (eixo Z)
+    public float spawnDistance = 200f;
+    public int initialBlocks = 6;    // coloque igual ao número de blocos da lista
+    public float blockLength = 60f;  // <-- ajuste esse valor conforme o tamanho exato da sua estrada
 
-    private float nextSpawnZ = 0f;         // Posição para spawnar o próximo bloco
+    private float nextSpawnZ = 0f;
     private List<GameObject> trackPrefabs = new List<GameObject>();
     private List<GameObject> activeBlocks = new List<GameObject>();
 
     void Start()
     {
-        // Adiciona seus prefabs à lista para usar no spawn
         trackPrefabs.Add(Bloco1_2);
         trackPrefabs.Add(Bloco3_4);
         trackPrefabs.Add(Bloco5_6);
@@ -31,36 +29,29 @@ public class PistaInfinita : MonoBehaviour
         trackPrefabs.Add(Bloco9_10);
         trackPrefabs.Add(Bloco11_12);
 
-        // Instancia os blocos iniciais da pista
+        // Instancia blocos iniciais na ordem
         for (int i = 0; i < initialBlocks; i++)
         {
-            SpawnTrackBlock();
+            GameObject block = Instantiate(trackPrefabs[i], new Vector3(0, 0, nextSpawnZ), Quaternion.identity);
+            activeBlocks.Add(block);
+            nextSpawnZ += blockLength;
         }
     }
 
     void Update()
     {
+        // Quando o jogador estiver perto do fim, move o primeiro bloco pro final
         if (player.position.z + spawnDistance > nextSpawnZ)
         {
-            SpawnTrackBlock();
-            RemoveOldestBlock();
-        }
-    }
-
-    void SpawnTrackBlock()
-    {
-        int prefabIndex = Random.Range(0, trackPrefabs.Count);
-        GameObject block = Instantiate(trackPrefabs[prefabIndex], new Vector3(0, 0, nextSpawnZ), Quaternion.identity);
-        activeBlocks.Add(block);
-        nextSpawnZ += blockLength;
-    }
-
-    void RemoveOldestBlock()
-    {
-        if (activeBlocks.Count > initialBlocks)
-        {
-            Destroy(activeBlocks[0]);
+            GameObject oldestBlock = activeBlocks[0];
             activeBlocks.RemoveAt(0);
+
+            oldestBlock.transform.position = new Vector3(0, 0, nextSpawnZ);
+            activeBlocks.Add(oldestBlock);
+
+            nextSpawnZ += blockLength;
         }
     }
 }
+
+
