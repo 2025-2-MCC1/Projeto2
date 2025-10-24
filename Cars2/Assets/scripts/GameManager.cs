@@ -5,46 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-
-    [Header("UI")]
-    public GameObject gameOverPanel; // arraste o painel de Game Over aqui
-
-    [HideInInspector]
-    public bool isGameOver = false;
+    public static GameManager Instance;
+    public GameObject gameOverPanel;
+    public bool isGameOver = false; //  Adicione esta linha
 
     private void Awake()
     {
-        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
-        //DontDestroyOnLoad(gameObject); // opcional se quiser manter entre cenas
-    }
-
-    private void Start()
-    {
-        if (gameOverPanel != null) gameOverPanel.SetActive(false);
-        Time.timeScale = 1f;
-        isGameOver = false;
     }
 
     public void GameOver()
     {
-        if (isGameOver) return;
-        isGameOver = true;
-        Time.timeScale = 0f; // pausa o jogo
-        if (gameOverPanel != null) gameOverPanel.SetActive(true);
+        isGameOver = true; //  Define que o jogo acabou
+        Time.timeScale = 0f;
+        gameOverPanel.SetActive(true);
     }
 
-    // chamadas por botões UI:
     public void Retry()
     {
+        isGameOver = false; //  Reseta quando reinicia
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void MainMenu(string menuSceneName) // ou int buildIndex
+    public void MainMenu()
     {
+        isGameOver = false;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(menuSceneName);
+        SceneManager.LoadScene("MainMenu");
     }
 }

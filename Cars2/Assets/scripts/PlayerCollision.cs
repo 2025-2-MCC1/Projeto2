@@ -1,22 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // Necessário para trocar de cena
 
 public class PlayerCollision : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            // opcional: tocar som, animação
-            GameManager.Instance.GameOver();
-        }
-    }
-
-    // se você usa OnCollision:
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            GameManager.Instance.GameOver();
+            // Pausa o jogo (opcional)
+            Time.timeScale = 1f; // garante que o tempo volte ao normal antes de mudar de cena
+            SceneManager.LoadScene("GameOver"); // Nome da cena que você quer carregar
         }
     }
 }
