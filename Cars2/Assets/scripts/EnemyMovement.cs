@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed = 8f;
+    public float speed = 20f;
     public float destroyZ = -10f; // depois de passar do jogador, destrói
 
     void Update()
