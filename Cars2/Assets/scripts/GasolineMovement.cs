@@ -22,7 +22,7 @@ public class GasolineMovement3D : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Aumenta combustível
-            GameManager.Instance.AddFuel(20f);
+            GameManager.Instance.AddFuel(40f);
             Destroy(gameObject);
         }
     }

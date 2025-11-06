@@ -5,19 +5,11 @@ public class GameOverMenu : MonoBehaviour
 {
     public void Retry()
     {
-        // Recarrega a cena atual
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Cars3"); // Nome exato da cena do jogo
     }
 
-    public void GoToMainMenu()
+    public void MainMenu()
     {
-        // Carrega a cena do menu principal
-        SceneManager.LoadScene("menu"); // ou "MainMenu", conforme o nome exato da cena
-    }
-
-    public void QuitGame()
-    {
-        // Fecha o jogo (funciona só em build)
-        Application.Quit();
+        SceneManager.LoadScene("menu");
     }
 }

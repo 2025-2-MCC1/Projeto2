@@ -13,11 +13,11 @@ public class Horizontal : MonoBehaviour
     {
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            transform.Translate(0.01f, 0, 0);
+            transform.Translate(0.04f, 0, 0);
         }
         else if(Input.GetAxisRaw("Horizontal")< 0)
         {
-            transform.Translate(-0.01f, 0, 0);
+            transform.Translate(-0.04f, 0, 0);
         }
             
 
