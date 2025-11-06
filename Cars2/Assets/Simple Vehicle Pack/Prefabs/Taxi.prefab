@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: -8177574281966076254}
   - component: {fileID: 2136960522422473702}
   - component: {fileID: 19966336853357400}
+  - component: {fileID: 4852616799519936930}
   m_Layer: 0
   m_Name: Taxi
   m_TagString: Enemy
@@ -443,8 +444,27 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.9, y: 1.4, z: 2.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4852616799519936930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646981259178978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae022d78db17a04ea46111d7e47d505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheels:
+  - {fileID: 4786165216473404}
+  - {fileID: 4760845229251968}
+  - {fileID: 4955056900105520}
+  - {fileID: 4652618803402950}
+  spinSpeed: 500
+  isMoving: 1
 --- !u!1 &1770694637400948
 GameObject:
   m_ObjectHideFlags: 0

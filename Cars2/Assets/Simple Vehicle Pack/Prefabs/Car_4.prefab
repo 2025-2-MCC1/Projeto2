@@ -442,6 +442,7 @@ GameObject:
   - component: {fileID: -5569650599488948233}
   - component: {fileID: 2885745373407573838}
   - component: {fileID: 1625704606023004812}
+  - component: {fileID: 3747791546047092713}
   m_Layer: 0
   m_Name: Car_4
   m_TagString: Enemy
@@ -529,5 +530,24 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.9, y: 1.4, z: 2.4}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3747791546047092713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646981259178978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae022d78db17a04ea46111d7e47d505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheels:
+  - {fileID: 4320995382077394}
+  - {fileID: 4872715787176878}
+  - {fileID: 4453798734306758}
+  - {fileID: 4907551743973842}
+  spinSpeed: 500
+  isMoving: 1
