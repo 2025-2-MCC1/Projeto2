@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro; // ← para usar texto na tela (TextMeshPro)
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,17 +9,22 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Over")]
     public bool isGameOver = false;
-    public string gameOverSceneName = "GameOver"; // nome da cena de Game Over
+    public string gameOverSceneName = "GameOver";
 
     [Header("Combustível")]
     public float maxFuel = 100f;
     public float currentFuel = 100f;
-    public float fuelDecreaseRate = 5f;
+    public float baseFuelDecrease = 3f;     // consumo normal por segundo
+    public float accelFuelExtra = 5f;       // consumo extra ao acelerar
+    public float speedFuelMultiplier = 0.05f; // consumo proporcional à velocidade
     public Slider fuelSlider;
 
     [Header("Gasolina Coletada")]
-    public int gasolinasColetadas = 0;          // contador de galões
-    public TextMeshProUGUI gasolinaText;        // texto na tela (arrastar no Inspector)
+    public int gasolinasColetadas = 0;
+    public TextMeshProUGUI gasolinaText;
+
+    [Header("Referência ao carro")]
+    public CarForward carForward; // arrasta o carro aqui no Inspector
 
     private void Awake()
     {
@@ -35,15 +40,30 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver) return;
 
-        // Consome combustível com o tempo
-        currentFuel -= fuelDecreaseRate * Time.deltaTime;
+        // Consumo base
+        float fuelConsumption = baseFuelDecrease * Time.deltaTime;
+
+        // Consumo proporcional à velocidade do carro
+        if (carForward != null)
+        {
+            fuelConsumption += carForward.GetCurrentSpeed() * speedFuelMultiplier * Time.deltaTime;
+        }
+
+        // Consumo extra ao acelerar
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            fuelConsumption += accelFuelExtra * Time.deltaTime;
+        }
+
+        // Diminui o combustível
+        currentFuel -= fuelConsumption;
         currentFuel = Mathf.Clamp(currentFuel, 0f, maxFuel);
 
-        // Atualiza barra (se tiver)
+        // Atualiza UI
         if (fuelSlider != null)
             fuelSlider.value = currentFuel / maxFuel;
 
-        // Se o combustível acabar → Game Over
+        // Game Over se acabar
         if (currentFuel <= 0f && !isGameOver)
             GameOver();
     }
@@ -51,8 +71,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameOver = true;
-        Time.timeScale = 1f; // garante que o tempo não fique pausado
-        SceneManager.LoadScene(gameOverSceneName); // vai pra cena de Game Over
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(gameOverSceneName);
     }
 
     public void Retry()
@@ -69,7 +89,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    // 👇 Quando pegar um galão de gasolina
+    // 👇 Quando pegar um galão
     public void AddFuel(float amount)
     {
         if (isGameOver) return;
@@ -77,11 +97,9 @@ public class GameManager : MonoBehaviour
         currentFuel += amount;
         currentFuel = Mathf.Clamp(currentFuel, 0f, maxFuel);
 
-        // Contabiliza também a coleta
         AddGasolineCollect();
     }
 
-    // ✅ Aumenta o contador de gasolina pega
     public void AddGasolineCollect()
     {
         gasolinasColetadas++;

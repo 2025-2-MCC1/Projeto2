@@ -43,4 +43,10 @@ public class CarForward : MonoBehaviour
         // Garante que o carro nunca pare nem ultrapasse o máximo
         currentSpeed = Mathf.Clamp(currentSpeed, baseSpeed, maxSpeed);
     }
+
+    // ✅ Método público para o GameManager acessar a velocidade atual
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed;
+    }
 }
