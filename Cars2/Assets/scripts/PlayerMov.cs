@@ -9,6 +9,7 @@ public class CarForward : MonoBehaviour
     public float brakingForce = 10f;    // Força do freio (↓)
 
     private float currentSpeed;
+    private bool slowingDown = false;   // Controle da desaceleração forçada
 
     void Start()
     {
@@ -20,33 +21,53 @@ public class CarForward : MonoBehaviour
         // Movimento constante pra frente
         transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
 
-        // --- Aceleração e frenagem ---
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (!slowingDown)
         {
-            // Acelera até o limite máximo
-            currentSpeed += acceleration * Time.deltaTime;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            // Diminui a velocidade mais rapidamente
-            currentSpeed -= brakingForce * Time.deltaTime;
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                currentSpeed += acceleration * Time.deltaTime;
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                currentSpeed -= brakingForce * Time.deltaTime;
+            }
+            else
+            {
+                if (currentSpeed > baseSpeed)
+                    currentSpeed -= acceleration * Time.deltaTime * 0.5f;
+                else if (currentSpeed < baseSpeed)
+                    currentSpeed += acceleration * Time.deltaTime * 0.5f;
+            }
         }
         else
         {
-            // Retorna suavemente à velocidade base
-            if (currentSpeed > baseSpeed)
-                currentSpeed -= acceleration * Time.deltaTime * 0.5f;
-            else if (currentSpeed < baseSpeed)
-                currentSpeed += acceleration * Time.deltaTime * 0.5f;
+            currentSpeed = Mathf.MoveTowards(currentSpeed, baseSpeed, brakingForce * Time.deltaTime);
         }
 
-        // Garante que o carro nunca pare nem ultrapasse o máximo
         currentSpeed = Mathf.Clamp(currentSpeed, baseSpeed, maxSpeed);
     }
 
-    // ✅ Método público para o GameManager acessar a velocidade atual
+    // ✅ Método público para pegar a velocidade atual
     public float GetCurrentSpeed()
     {
         return currentSpeed;
+    }
+
+    // ✅ Reduz gradualmente a velocidade (usado pela barreira)
+    public void ReduceSpeedOverTime(float rate)
+    {
+        currentSpeed = Mathf.MoveTowards(currentSpeed, baseSpeed, rate * Time.deltaTime);
+    }
+
+    // ✅ Chamada pela barreira para forçar desaceleração
+    public void SlowDownToBaseSpeed()
+    {
+        slowingDown = true;
+        Invoke(nameof(StopSlowing), 2f);
+    }
+
+    private void StopSlowing()
+    {
+        slowingDown = false;
     }
 }
