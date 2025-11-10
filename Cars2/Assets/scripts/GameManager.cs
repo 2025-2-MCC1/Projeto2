@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,6 +36,18 @@ public class GameManager : MonoBehaviour
 
     private bool isUsingNitro = false;
 
+    [Header("Contagem de Largada")]
+    public TextMeshProUGUI whiteText;
+    public TextMeshProUGUI redText;
+    public Image leftFlag;
+    public Image rightFlag;
+
+    // 🏁 NOVO: textos exclusivos para o "RACE!"
+    public TextMeshProUGUI whiteRaceText;
+    public TextMeshProUGUI redRaceText;
+
+    private bool gameStarted = false;
+
     private void Awake()
     {
         Instance = this;
@@ -49,15 +62,82 @@ public class GameManager : MonoBehaviour
 
         if (nitroSlider != null)
             nitroSlider.value = currentNitro / maxNitro;
+
+        // 🚦 Inicia a contagem regressiva
+        StartCoroutine(StartCountdown());
     }
 
     private void Update()
     {
-        if (isGameOver) return;
+        if (!gameStarted || isGameOver) return;
 
         AtualizarCombustivel();
         AtualizarNitro();
     }
+
+    // =====================================================
+    // ================   CONTAGEM DE LARGADA   =============
+    // =====================================================
+
+    IEnumerator StartCountdown()
+    {
+        // 🚦 Bloqueia controle do jogador (anda só na baseSpeed)
+        if (carForward != null)
+            carForward.canControl = false;
+
+        // Ativa textos de contagem
+        whiteText.gameObject.SetActive(true);
+        redText.gameObject.SetActive(true);
+
+        yield return StartCoroutine(ShowCountdownNumber("3"));
+        yield return StartCoroutine(ShowCountdownNumber("2"));
+        yield return StartCoroutine(ShowCountdownNumber("1"));
+
+        // 🏁 "RACE!" + bandeiras
+        yield return StartCoroutine(ShowRaceMessage());
+
+        // ✅ Libera o controle do jogador
+        if (carForward != null)
+            carForward.canControl = true;
+
+        gameStarted = true;
+    }
+
+    IEnumerator ShowCountdownNumber(string text, float duration = 1f)
+    {
+        whiteText.text = text;
+        redText.text = text;
+        yield return new WaitForSeconds(duration);
+    }
+
+    IEnumerator ShowRaceMessage()
+    {
+        // Desativa textos da contagem
+        whiteText.gameObject.SetActive(false);
+        redText.gameObject.SetActive(false);
+
+        // Mostra textos do "RACE!"
+        whiteRaceText.gameObject.SetActive(true);
+        redRaceText.gameObject.SetActive(true);
+        whiteRaceText.text = "RACE!";
+        redRaceText.text = "RACE!";
+
+        // Ativa bandeiras
+        leftFlag.gameObject.SetActive(true);
+        rightFlag.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.8f);
+
+        // Esconde tudo
+        whiteRaceText.gameObject.SetActive(false);
+        redRaceText.gameObject.SetActive(false);
+        leftFlag.gameObject.SetActive(false);
+        rightFlag.gameObject.SetActive(false);
+    }
+
+    // =====================================================
+    // ===================   COMBUSTÍVEL   =================
+    // =====================================================
 
     void AtualizarCombustivel()
     {
@@ -79,13 +159,16 @@ public class GameManager : MonoBehaviour
             GameOver();
     }
 
+    // =====================================================
+    // ======================   NITRO   ====================
+    // =====================================================
+
     void AtualizarNitro()
     {
         if (carForward == null) return;
 
         bool isPressingNitro = Input.GetKey(KeyCode.Space);
 
-        // 🚀 Nitro ativo apenas enquanto pressiona e há carga
         if (isPressingNitro && currentNitro > 0f)
         {
             if (!isUsingNitro)
@@ -97,18 +180,15 @@ public class GameManager : MonoBehaviour
             currentNitro -= nitroConsumptionRate * Time.deltaTime;
             currentNitro = Mathf.Clamp(currentNitro, 0f, maxNitro);
 
-            // se zerar, desativa imediatamente
             if (currentNitro <= 0f)
                 StopNitro();
         }
         else
         {
-            // 🧯 soltar espaço desativa instantaneamente
             if (isUsingNitro)
                 StopNitro();
         }
 
-        // atualiza UI sempre
         if (nitroSlider != null)
             nitroSlider.value = currentNitro / maxNitro;
     }
@@ -119,10 +199,13 @@ public class GameManager : MonoBehaviour
 
         isUsingNitro = false;
 
-        // retorna velocidade normal
         if (carForward != null)
             carForward.SetSpeedMultiplier(1f);
     }
+
+    // =====================================================
+    // ===================   GASOLINA UI   =================
+    // =====================================================
 
     public void AddFuel(float amount)
     {
@@ -155,6 +238,10 @@ public class GameManager : MonoBehaviour
         if (gasolinaText != null)
             gasolinaText.text = "Gasolina: " + gasolinasColetadas;
     }
+
+    // =====================================================
+    // ======================   GAME   =====================
+    // =====================================================
 
     public void GameOver()
     {
