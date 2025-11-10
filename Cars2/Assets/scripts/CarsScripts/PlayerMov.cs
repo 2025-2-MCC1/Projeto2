@@ -3,13 +3,16 @@
 public class CarForward : MonoBehaviour
 {
     [Header("Movimento Frontal")]
-    public float baseSpeed = 10f;       // Velocidade mínima (nunca para)
+    public float baseSpeed = 10f;       // Velocidade mínima
     public float maxSpeed = 25f;        // Velocidade máxima
-    public float acceleration = 5f;     // Aceleração (↑)
-    public float brakingForce = 10f;    // Força do freio (↓)
+    public float acceleration = 5f;     // Aceleração
+    public float brakingForce = 10f;    // Força do freio
 
     private float currentSpeed;
-    private bool slowingDown = false;   // Controle da desaceleração forçada
+    private bool slowingDown = false;
+
+    // 🚀 Nitro controlado externamente (GameManager)
+    private float speedMultiplier = 1f;
 
     void Start()
     {
@@ -18,21 +21,23 @@ public class CarForward : MonoBehaviour
 
     void Update()
     {
-        // Movimento constante pra frente
-        transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
+        // Movimento frontal
+        transform.Translate(Vector3.forward * currentSpeed * speedMultiplier * Time.deltaTime);
 
+        // Movimento padrão (aceleração e desaceleração)
         if (!slowingDown)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
                 currentSpeed += acceleration * Time.deltaTime;
             }
-            else if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
                 currentSpeed -= brakingForce * Time.deltaTime;
             }
             else
             {
+                // Retorna gradualmente à velocidade base
                 if (currentSpeed > baseSpeed)
                     currentSpeed -= acceleration * Time.deltaTime * 0.5f;
                 else if (currentSpeed < baseSpeed)
@@ -44,22 +49,22 @@ public class CarForward : MonoBehaviour
             currentSpeed = Mathf.MoveTowards(currentSpeed, baseSpeed, brakingForce * Time.deltaTime);
         }
 
-        currentSpeed = Mathf.Clamp(currentSpeed, baseSpeed, maxSpeed);
+        // Limita a velocidade máxima conforme o multiplicador
+        currentSpeed = Mathf.Clamp(currentSpeed, baseSpeed, maxSpeed * speedMultiplier);
     }
 
-    // ✅ Método público para pegar a velocidade atual
+    // ✅ Retorna a velocidade atual (sem o multiplicador)
     public float GetCurrentSpeed()
     {
         return currentSpeed;
     }
 
-    // ✅ Reduz gradualmente a velocidade (usado pela barreira)
+    // ✅ Reduz gradualmente a velocidade (usado por obstáculos)
     public void ReduceSpeedOverTime(float rate)
     {
         currentSpeed = Mathf.MoveTowards(currentSpeed, baseSpeed, rate * Time.deltaTime);
     }
 
-    // ✅ Chamada pela barreira para forçar desaceleração
     public void SlowDownToBaseSpeed()
     {
         slowingDown = true;
@@ -69,5 +74,11 @@ public class CarForward : MonoBehaviour
     private void StopSlowing()
     {
         slowingDown = false;
+    }
+
+    // 🚀 Define o multiplicador de velocidade (usado pelo GameManager)
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = Mathf.Clamp(multiplier, 1f, 2f); // máximo 2x
     }
 }

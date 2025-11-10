@@ -14,17 +14,26 @@ public class GameManager : MonoBehaviour
     [Header("Combustível")]
     public float maxFuel = 100f;
     public float currentFuel = 100f;
-    public float baseFuelDecrease = 3f;     // consumo normal por segundo
-    public float accelFuelExtra = 5f;       // consumo extra ao acelerar
-    public float speedFuelMultiplier = 0.05f; // consumo proporcional à velocidade
+    public float baseFuelDecrease = 3f;
+    public float accelFuelExtra = 5f;
+    public float speedFuelMultiplier = 0.05f;
     public Slider fuelSlider;
+
+    [Header("Nitro")]
+    public float maxNitro = 5f;
+    public float currentNitro = 0f;
+    public float nitroConsumptionRate = 1f;
+    public float boostedSpeedMultiplier = 1.8f;
+    public Slider nitroSlider;
 
     [Header("Gasolina Coletada")]
     public int gasolinasColetadas = 0;
     public TextMeshProUGUI gasolinaText;
 
     [Header("Referência ao carro")]
-    public CarForward carForward; // arrasta o carro aqui no Inspector
+    public CarForward carForward;
+
+    private bool isUsingNitro = false;
 
     private void Awake()
     {
@@ -34,38 +43,117 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         AtualizarGasolinaUI();
+
+        if (fuelSlider != null)
+            fuelSlider.value = currentFuel / maxFuel;
+
+        if (nitroSlider != null)
+            nitroSlider.value = currentNitro / maxNitro;
     }
 
     private void Update()
     {
         if (isGameOver) return;
 
-        // Consumo base
+        AtualizarCombustivel();
+        AtualizarNitro();
+    }
+
+    void AtualizarCombustivel()
+    {
         float fuelConsumption = baseFuelDecrease * Time.deltaTime;
 
-        // Consumo proporcional à velocidade do carro
         if (carForward != null)
-        {
             fuelConsumption += carForward.GetCurrentSpeed() * speedFuelMultiplier * Time.deltaTime;
-        }
 
-        // Consumo extra ao acelerar
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
             fuelConsumption += accelFuelExtra * Time.deltaTime;
-        }
 
-        // Diminui o combustível
         currentFuel -= fuelConsumption;
         currentFuel = Mathf.Clamp(currentFuel, 0f, maxFuel);
 
-        // Atualiza UI
         if (fuelSlider != null)
             fuelSlider.value = currentFuel / maxFuel;
 
-        // Game Over se acabar
         if (currentFuel <= 0f && !isGameOver)
             GameOver();
+    }
+
+    void AtualizarNitro()
+    {
+        if (carForward == null) return;
+
+        bool isPressingNitro = Input.GetKey(KeyCode.Space);
+
+        // 🚀 Nitro ativo apenas enquanto pressiona e há carga
+        if (isPressingNitro && currentNitro > 0f)
+        {
+            if (!isUsingNitro)
+            {
+                isUsingNitro = true;
+                carForward.SetSpeedMultiplier(boostedSpeedMultiplier);
+            }
+
+            currentNitro -= nitroConsumptionRate * Time.deltaTime;
+            currentNitro = Mathf.Clamp(currentNitro, 0f, maxNitro);
+
+            // se zerar, desativa imediatamente
+            if (currentNitro <= 0f)
+                StopNitro();
+        }
+        else
+        {
+            // 🧯 soltar espaço desativa instantaneamente
+            if (isUsingNitro)
+                StopNitro();
+        }
+
+        // atualiza UI sempre
+        if (nitroSlider != null)
+            nitroSlider.value = currentNitro / maxNitro;
+    }
+
+    private void StopNitro()
+    {
+        if (!isUsingNitro) return;
+
+        isUsingNitro = false;
+
+        // retorna velocidade normal
+        if (carForward != null)
+            carForward.SetSpeedMultiplier(1f);
+    }
+
+    public void AddFuel(float amount)
+    {
+        if (isGameOver) return;
+
+        currentFuel += amount;
+        currentFuel = Mathf.Clamp(currentFuel, 0f, maxFuel);
+        AddGasolineCollect();
+    }
+
+    public void AddNitro(float amount)
+    {
+        if (isGameOver) return;
+
+        currentNitro += amount;
+        currentNitro = Mathf.Clamp(currentNitro, 0f, maxNitro);
+
+        if (nitroSlider != null)
+            nitroSlider.value = currentNitro / maxNitro;
+    }
+
+    public void AddGasolineCollect()
+    {
+        gasolinasColetadas++;
+        AtualizarGasolinaUI();
+    }
+
+    void AtualizarGasolinaUI()
+    {
+        if (gasolinaText != null)
+            gasolinaText.text = "Gasolina: " + gasolinasColetadas;
     }
 
     public void GameOver()
@@ -87,28 +175,5 @@ public class GameManager : MonoBehaviour
         isGameOver = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
-    }
-
-    // 👇 Quando pegar um galão
-    public void AddFuel(float amount)
-    {
-        if (isGameOver) return;
-
-        currentFuel += amount;
-        currentFuel = Mathf.Clamp(currentFuel, 0f, maxFuel);
-
-        AddGasolineCollect();
-    }
-
-    public void AddGasolineCollect()
-    {
-        gasolinasColetadas++;
-        AtualizarGasolinaUI();
-    }
-
-    void AtualizarGasolinaUI()
-    {
-        if (gasolinaText != null)
-            gasolinaText.text = "Gasolina: " + gasolinasColetadas;
     }
 }
