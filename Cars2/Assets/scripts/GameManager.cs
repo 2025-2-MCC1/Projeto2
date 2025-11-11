@@ -42,9 +42,12 @@ public class GameManager : MonoBehaviour
     public Image leftFlag;
     public Image rightFlag;
 
-    // 🏁 NOVO: textos exclusivos para o "RACE!"
+    [Header("Textos do 'RACE!'")]
     public TextMeshProUGUI whiteRaceText;
     public TextMeshProUGUI redRaceText;
+
+    [Header("Som da Corneta")]
+    public AudioSource cornetaSom; // 🔊 Adicionado aqui
 
     private bool gameStarted = false;
 
@@ -76,7 +79,7 @@ public class GameManager : MonoBehaviour
     }
 
     // =====================================================
-    // ================   CONTAGEM DE LARGADA   =============
+    // ================   CONTAGEM DE LARGADA   ============
     // =====================================================
 
     IEnumerator StartCountdown()
@@ -93,7 +96,7 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(ShowCountdownNumber("2"));
         yield return StartCoroutine(ShowCountdownNumber("1"));
 
-        // 🏁 "RACE!" + bandeiras
+        // 🏁 "RACE!" + bandeiras + som
         yield return StartCoroutine(ShowRaceMessage());
 
         // ✅ Libera o controle do jogador
@@ -121,6 +124,10 @@ public class GameManager : MonoBehaviour
         redRaceText.gameObject.SetActive(true);
         whiteRaceText.text = "RACE!";
         redRaceText.text = "RACE!";
+
+        // 🎺 Toca o som da corneta
+        if (cornetaSom != null && !cornetaSom.isPlaying)
+            cornetaSom.Play();
 
         // Ativa bandeiras
         leftFlag.gameObject.SetActive(true);
