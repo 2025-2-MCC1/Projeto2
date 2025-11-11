@@ -289,9 +289,21 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+
+        Debug.Log("PERDEU");
+        if (isGameOver) return;
+
         isGameOver = true;
         contandoTempo = false;
         Time.timeScale = 1f;
+
+        // 🟢 encontra o objeto GameOverData e copia as informações
+        GameObject go = GameObject.Find("Data");
+        GameOverData data = go.GetComponent<GameOverData>();
+        data.tempoDeCorrida = tempoDeCorrida;
+        data.gasolinasColetadas = gasolinasColetadas;
+
+        // 🟢 Carrega a cena de Game Over
         SceneManager.LoadScene(gameOverSceneName);
     }
 

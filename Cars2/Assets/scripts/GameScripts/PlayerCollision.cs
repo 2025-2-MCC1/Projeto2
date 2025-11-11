@@ -9,7 +9,7 @@ public class PlayerCollision : MonoBehaviour
         {
             // Pausa o jogo (opcional)
             Time.timeScale = 1f; // garante que o tempo volte ao normal antes de mudar de cena
-            SceneManager.LoadScene("GameOver"); // Nome da cena que você quer carregar
+            GameObject.Find("GameManager").GetComponent<GameManager>().GameOver();
         }
     }
 }
