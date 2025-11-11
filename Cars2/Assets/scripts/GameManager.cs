@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Gasolina Coletada")]
     public int gasolinasColetadas = 0;
-    public TextMeshProUGUI gasolinaText;
+    public TextMeshProUGUI gasolinaWhiteText;
+    public TextMeshProUGUI gasolinaRedText;
 
     [Header("Referência ao carro")]
     public CarForward carForward;
@@ -47,9 +48,19 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI redRaceText;
 
     [Header("Som da Corneta")]
-    public AudioSource cornetaSom; // 🔊 Adicionado aqui
+    public AudioSource cornetaSom;
 
     private bool gameStarted = false;
+
+    // =====================================================
+    // ====================   CRONÔMETRO   =================
+    // =====================================================
+
+    [Header("Cronômetro")]
+    public TextMeshProUGUI cronometroWhiteText;
+    public TextMeshProUGUI cronometroRedText;
+    private float tempoDeCorrida = 0f;
+    private bool contandoTempo = false;
 
     private void Awake()
     {
@@ -76,6 +87,13 @@ public class GameManager : MonoBehaviour
 
         AtualizarCombustivel();
         AtualizarNitro();
+
+        // 🕒 Atualiza o cronômetro
+        if (contandoTempo)
+        {
+            tempoDeCorrida += Time.deltaTime;
+            AtualizarCronometroUI();
+        }
     }
 
     // =====================================================
@@ -84,11 +102,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartCountdown()
     {
-        // 🚦 Bloqueia controle do jogador (anda só na baseSpeed)
         if (carForward != null)
             carForward.canControl = false;
 
-        // Ativa textos de contagem
         whiteText.gameObject.SetActive(true);
         redText.gameObject.SetActive(true);
 
@@ -96,14 +112,17 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(ShowCountdownNumber("2"));
         yield return StartCoroutine(ShowCountdownNumber("1"));
 
-        // 🏁 "RACE!" + bandeiras + som
         yield return StartCoroutine(ShowRaceMessage());
 
-        // ✅ Libera o controle do jogador
         if (carForward != null)
             carForward.canControl = true;
 
         gameStarted = true;
+
+        // 🕒 Começa o cronômetro
+        contandoTempo = true;
+        tempoDeCorrida = 0f;
+        AtualizarCronometroUI();
     }
 
     IEnumerator ShowCountdownNumber(string text, float duration = 1f)
@@ -115,27 +134,22 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ShowRaceMessage()
     {
-        // Desativa textos da contagem
         whiteText.gameObject.SetActive(false);
         redText.gameObject.SetActive(false);
 
-        // Mostra textos do "RACE!"
         whiteRaceText.gameObject.SetActive(true);
         redRaceText.gameObject.SetActive(true);
         whiteRaceText.text = "RACE!";
         redRaceText.text = "RACE!";
 
-        // 🎺 Toca o som da corneta
         if (cornetaSom != null && !cornetaSom.isPlaying)
             cornetaSom.Play();
 
-        // Ativa bandeiras
         leftFlag.gameObject.SetActive(true);
         rightFlag.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(0.8f);
 
-        // Esconde tudo
         whiteRaceText.gameObject.SetActive(false);
         redRaceText.gameObject.SetActive(false);
         leftFlag.gameObject.SetActive(false);
@@ -242,8 +256,31 @@ public class GameManager : MonoBehaviour
 
     void AtualizarGasolinaUI()
     {
-        if (gasolinaText != null)
-            gasolinaText.text = "Gasolina: " + gasolinasColetadas;
+        string texto = "Gasolina: " + gasolinasColetadas;
+
+        if (gasolinaWhiteText != null)
+            gasolinaWhiteText.text = texto;
+
+        if (gasolinaRedText != null)
+            gasolinaRedText.text = texto;
+    }
+
+    // =====================================================
+    // ===================   CRONÔMETRO UI   ===============
+    // =====================================================
+
+    void AtualizarCronometroUI()
+    {
+        int minutos = Mathf.FloorToInt(tempoDeCorrida / 60f);
+        int segundos = Mathf.FloorToInt(tempoDeCorrida % 60f);
+        int centesimos = Mathf.FloorToInt((tempoDeCorrida * 100f) % 100f);
+        string texto = $"{minutos:00}:{segundos:00}.{centesimos:00}";
+
+        if (cronometroWhiteText != null)
+            cronometroWhiteText.text = texto;
+
+        if (cronometroRedText != null)
+            cronometroRedText.text = texto;
     }
 
     // =====================================================
@@ -253,6 +290,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameOver = true;
+        contandoTempo = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(gameOverSceneName);
     }
@@ -260,6 +298,7 @@ public class GameManager : MonoBehaviour
     public void Retry()
     {
         isGameOver = false;
+        contandoTempo = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -267,6 +306,7 @@ public class GameManager : MonoBehaviour
     public void MainMenu()
     {
         isGameOver = false;
+        contandoTempo = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }

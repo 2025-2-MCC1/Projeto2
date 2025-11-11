@@ -1,12 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\25028270\\Downloads\\Projeto2\\Cars2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A34961AB-07D3-E7AB-0580-BAF83B2989EC}|Assembly-CSharp.csproj|c:\\users\\25028270\\downloads\\projeto2\\cars2\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34961AB-07D3-E7AB-0580-BAF83B2989EC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A34961AB-07D3-E7AB-0580-BAF83B2989EC}|Assembly-CSharp.csproj|c:\\users\\25028270\\downloads\\projeto2\\cars2\\assets\\scripts\\carsscripts\\horizontalplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34961AB-07D3-E7AB-0580-BAF83B2989EC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\carsscripts\\horizontalplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\25028270\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\GameManager.cs",
+              "ToolTip": "C:\\Users\\25028270\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\GameManager.cs",
+              "RelativeToolTip": "Assets\\scripts\\GameManager.cs",
+              "ViewState": "AgIAABcBAAAAAAAAAAA4wC8BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T12:59:54.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HorizontalPlayer.cs",
+              "DocumentMoniker": "C:\\Users\\25028270\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\CarsScripts\\HorizontalPlayer.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\CarsScripts\\HorizontalPlayer.cs",
+              "ToolTip": "C:\\Users\\25028270\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\CarsScripts\\HorizontalPlayer.cs",
+              "RelativeToolTip": "Assets\\scripts\\CarsScripts\\HorizontalPlayer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T12:01:29.831Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

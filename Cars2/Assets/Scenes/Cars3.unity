@@ -3679,7 +3679,6 @@ GameObject:
   - component: {fileID: 684350140}
   - component: {fileID: 684350142}
   - component: {fileID: 684350141}
-  - component: {fileID: 684350143}
   m_Layer: 5
   m_Name: Cronometro
   m_TagString: Untagged
@@ -3792,7 +3791,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.20709229, y: 0, z: -40.010498, w: 0}
+  m_margin: {x: -0.20709229, y: 0, z: -216.29083, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3806,21 +3805,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684350139}
   m_CullTransparentMesh: 1
---- !u!114 &684350143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684350139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e29e95b2da51c045bfb91c4e26b8dc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 684350141}
-  startCountdownText: {fileID: 0}
-  cornetaSom: {fileID: 0}
 --- !u!1 &690350277
 GameObject:
   m_ObjectHideFlags: 0
@@ -7555,7 +7539,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.20709229, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.20709229, y: 0, z: -180.11249, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7950,7 +7934,8 @@ MonoBehaviour:
   boostedSpeedMultiplier: 1.8
   nitroSlider: {fileID: 741817562}
   gasolinasColetadas: 0
-  gasolinaText: {fileID: 351270679}
+  gasolinaWhiteText: {fileID: 351270679}
+  gasolinaRedText: {fileID: 1514134525}
   carForward: {fileID: 600969397}
   whiteText: {fileID: 644097118}
   redText: {fileID: 2137219681}
@@ -7959,6 +7944,8 @@ MonoBehaviour:
   whiteRaceText: {fileID: 1054336159}
   redRaceText: {fileID: 681251210}
   cornetaSom: {fileID: 1831907623}
+  cronometroWhiteText: {fileID: 684350141}
+  cronometroRedText: {fileID: 1630969693}
 --- !u!4 &1831907622
 Transform:
   m_ObjectHideFlags: 0

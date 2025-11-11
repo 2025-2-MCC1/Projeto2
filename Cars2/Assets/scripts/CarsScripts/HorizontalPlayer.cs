@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Horizontal : MonoBehaviour
 {
+    private float SideSpeed = 3.5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,11 +14,11 @@ public class Horizontal : MonoBehaviour
     {
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            transform.Translate(0.01f, 0, 0);
+            transform.Translate(SideSpeed * Time.deltaTime, 0, 0);
         }
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            transform.Translate(-0.01f, 0, 0);
+            transform.Translate(-SideSpeed * Time.deltaTime, 0, 0);
         }
 
 
