@@ -134,6 +134,7 @@ MonoBehaviour:
   frontWheelsToTurn:
   - {fileID: 8649615231274301767}
   - {fileID: 697401578307552650}
+  - {fileID: 2577748686464113156}
   spinSpeed: 1000
   maxTurnAngle: 30
   input: 0
