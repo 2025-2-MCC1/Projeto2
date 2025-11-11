@@ -1,41 +1,77 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class CarForward : MonoBehaviour
 {
     [Header("Movimento Frontal")]
-    public float baseSpeed = 10f;       // Velocidade mínima
-    public float maxSpeed = 25f;        // Velocidade máxima
-    public float acceleration = 5f;     // Aceleração
-    public float brakingForce = 10f;    // Força do freio
+    public float baseSpeed = 10f;
+    public float maxSpeed = 25f;
+    public float acceleration = 5f;
+    public float brakingForce = 10f;
 
     [Header("Controle do Jogador")]
-    public bool canControl = true;      // 🚦 Se falso, bloqueia os inputs (mas mantém baseSpeed)
+    public bool canControl = true;
 
     private float currentSpeed;
     private bool slowingDown = false;
-
-    // 🚀 Nitro controlado externamente (GameManager)
     private float speedMultiplier = 1f;
+
+    [Header("Som do Motor")]
+    public AudioClip engineSound;
+    public float minPitch = 0.8f;
+    public float maxPitch = 2.0f;
+    public float engineVolume = 0.6f;
+    private AudioSource engineAudio;
+
+    [Header("Som de Freio")]
+    public AudioClip brakeSound;
+    public float brakeVolume = 0.8f;
+    private AudioSource brakeAudio;
+    private bool isBrakingSoundPlaying = false;
+
+    [Header("Som de Nitro")]
+    public AudioClip nitroSound;
+    public float nitroVolume = 1f;
+    private AudioSource nitroAudio;
+    private bool isNitroActive = false;
 
     void Start()
     {
         currentSpeed = baseSpeed;
+
+        // 🎧 Som do motor
+        engineAudio = gameObject.AddComponent<AudioSource>();
+        engineAudio.clip = engineSound;
+        engineAudio.loop = true;
+        engineAudio.volume = engineVolume;
+        engineAudio.Play();
+
+        // 🎧 Som de freio
+        brakeAudio = gameObject.AddComponent<AudioSource>();
+        brakeAudio.clip = brakeSound;
+        brakeAudio.loop = false;
+        brakeAudio.volume = brakeVolume;
+
+        // 🎧 Som de nitro
+        nitroAudio = gameObject.AddComponent<AudioSource>();
+        nitroAudio.clip = nitroSound;
+        nitroAudio.loop = true; // o som toca enquanto o nitro estiver ativo
+        nitroAudio.volume = nitroVolume;
     }
 
     void Update()
     {
-        // Movimento frontal contínuo (o carro sempre anda pra frente)
         transform.Translate(Vector3.forward * currentSpeed * speedMultiplier * Time.deltaTime);
 
-        // 🚫 Se o jogador ainda não pode controlar, mantém apenas a velocidade base
         if (!canControl)
         {
-            // Garante que o carro fique exatamente na velocidade mínima
             currentSpeed = Mathf.MoveTowards(currentSpeed, baseSpeed, brakingForce * Time.deltaTime);
+            UpdateEngineSound();
             return;
         }
 
-        // 🎮 Movimento padrão (aceleração e desaceleração)
+        bool isBraking = false;
+
         if (!slowingDown)
         {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -45,10 +81,10 @@ public class CarForward : MonoBehaviour
             else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
                 currentSpeed -= brakingForce * Time.deltaTime;
+                isBraking = true;
             }
             else
             {
-                // Retorna gradualmente à velocidade base
                 if (currentSpeed > baseSpeed)
                     currentSpeed -= acceleration * Time.deltaTime * 0.5f;
                 else if (currentSpeed < baseSpeed)
@@ -60,14 +96,58 @@ public class CarForward : MonoBehaviour
             currentSpeed = Mathf.MoveTowards(currentSpeed, baseSpeed, brakingForce * Time.deltaTime);
         }
 
-        // Limita a velocidade máxima conforme o multiplicador
         currentSpeed = Mathf.Clamp(currentSpeed, baseSpeed, maxSpeed * speedMultiplier);
+
+        UpdateEngineSound();
+        HandleBrakeSound(isBraking);
+        HandleNitroSound();
     }
 
-    public float GetCurrentSpeed()
+    private void UpdateEngineSound()
     {
-        return currentSpeed;
+        if (engineAudio && engineAudio.isPlaying)
+        {
+            float t = (currentSpeed - baseSpeed) / (maxSpeed - baseSpeed);
+            engineAudio.pitch = Mathf.Lerp(minPitch, maxPitch, t);
+        }
     }
+
+    private void HandleBrakeSound(bool isBraking)
+    {
+        if (isBraking)
+        {
+            if (!isBrakingSoundPlaying)
+            {
+                brakeAudio.Play();
+                isBrakingSoundPlaying = true;
+            }
+        }
+        else
+        {
+            if (isBrakingSoundPlaying && !brakeAudio.isPlaying)
+            {
+                isBrakingSoundPlaying = false;
+            }
+        }
+    }
+
+    private void HandleNitroSound()
+    {
+        bool shouldPlayNitro = speedMultiplier > 1.05f;
+
+        if (shouldPlayNitro && !isNitroActive)
+        {
+            nitroAudio.Play();
+            isNitroActive = true;
+        }
+        else if (!shouldPlayNitro && isNitroActive)
+        {
+            nitroAudio.Stop();
+            isNitroActive = false;
+        }
+    }
+
+    public float GetCurrentSpeed() => currentSpeed;
 
     public void ReduceSpeedOverTime(float rate)
     {
@@ -80,14 +160,14 @@ public class CarForward : MonoBehaviour
         Invoke(nameof(StopSlowing), 2f);
     }
 
-    private void StopSlowing()
-    {
-        slowingDown = false;
-    }
+    private void StopSlowing() => slowingDown = false;
 
     public void SetSpeedMultiplier(float multiplier)
     {
-        speedMultiplier = Mathf.Clamp(multiplier, 1f, 2f); // máximo 2x
+        speedMultiplier = Mathf.Clamp(multiplier, 1f, 2f);
+
+        // Atualiza o som do nitro imediatamente
+        HandleNitroSound();
     }
 }
 
