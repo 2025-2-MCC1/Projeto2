@@ -1,18 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\",
+  "WorkspaceRootPath": "C:\\Users\\25028032\\Downloads\\Projeto2\\Cars2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\MenuScripts\\menucontroler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\scripts\\MenuScripts\\menucontroler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A34961AB-07D3-E7AB-0580-BAF83B2989EC}|Assembly-CSharp.csproj|c:\\users\\25028032\\downloads\\projeto2\\cars2\\assets\\scripts\\carsscripts\\horizontalplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34961AB-07D3-E7AB-0580-BAF83B2989EC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\carsscripts\\horizontalplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\GameOverScripts\\GameOverMenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\scripts\\GameOverScripts\\GameOverMenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A34961AB-07D3-E7AB-0580-BAF83B2989EC}|Assembly-CSharp.csproj|c:\\users\\25028032\\downloads\\projeto2\\cars2\\assets\\scripts\\carsscripts\\wallslowdown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34961AB-07D3-E7AB-0580-BAF83B2989EC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\carsscripts\\wallslowdown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\MenuScripts\\Menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\scripts\\MenuScripts\\Menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A34961AB-07D3-E7AB-0580-BAF83B2989EC}|Assembly-CSharp.csproj|c:\\users\\25028032\\downloads\\projeto2\\cars2\\assets\\scripts\\spawnscripts\\pistaspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34961AB-07D3-E7AB-0580-BAF83B2989EC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnscripts\\pistaspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A34961AB-07D3-E7AB-0580-BAF83B2989EC}|Assembly-CSharp.csproj|c:\\users\\25028032\\downloads\\projeto2\\cars2\\assets\\scripts\\spawnscripts\\spawnarvores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34961AB-07D3-E7AB-0580-BAF83B2989EC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnscripts\\spawnarvores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +31,54 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "menucontroler.cs",
-              "DocumentMoniker": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\MenuScripts\\menucontroler.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\MenuScripts\\menucontroler.cs",
-              "ToolTip": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\MenuScripts\\menucontroler.cs",
-              "RelativeToolTip": "Assets\\scripts\\MenuScripts\\menucontroler.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "HorizontalPlayer.cs",
+              "DocumentMoniker": "C:\\Users\\25028032\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\CarsScripts\\HorizontalPlayer.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\CarsScripts\\HorizontalPlayer.cs",
+              "ToolTip": "C:\\Users\\25028032\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\CarsScripts\\HorizontalPlayer.cs",
+              "RelativeToolTip": "Assets\\scripts\\CarsScripts\\HorizontalPlayer.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBIAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T03:13:50.337Z",
+              "WhenOpened": "2025-11-12T12:54:26.546Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "GameOverMenu.cs",
-              "DocumentMoniker": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\GameOverScripts\\GameOverMenu.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\GameOverScripts\\GameOverMenu.cs",
-              "ToolTip": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\GameOverScripts\\GameOverMenu.cs",
-              "RelativeToolTip": "Assets\\scripts\\GameOverScripts\\GameOverMenu.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "WallSlowDown.cs",
+              "DocumentMoniker": "C:\\Users\\25028032\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\CarsScripts\\WallSlowDown.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\CarsScripts\\WallSlowDown.cs",
+              "ToolTip": "C:\\Users\\25028032\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\CarsScripts\\WallSlowDown.cs",
+              "RelativeToolTip": "Assets\\scripts\\CarsScripts\\WallSlowDown.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T03:12:44.162Z",
+              "WhenOpened": "2025-11-12T12:15:29.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SpawnArvores.cs",
+              "DocumentMoniker": "C:\\Users\\25028032\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\SpawnScripts\\SpawnArvores.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\SpawnScripts\\SpawnArvores.cs",
+              "ToolTip": "C:\\Users\\25028032\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\SpawnScripts\\SpawnArvores.cs",
+              "RelativeToolTip": "Assets\\scripts\\SpawnScripts\\SpawnArvores.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAwwAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T12:10:15.328Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Menu.cs",
-              "DocumentMoniker": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\MenuScripts\\Menu.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\MenuScripts\\Menu.cs",
-              "ToolTip": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\MenuScripts\\Menu.cs",
-              "RelativeToolTip": "Assets\\scripts\\MenuScripts\\Menu.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "PistaSpawner.cs",
+              "DocumentMoniker": "C:\\Users\\25028032\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\SpawnScripts\\PistaSpawner.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\SpawnScripts\\PistaSpawner.cs",
+              "ToolTip": "C:\\Users\\25028032\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\SpawnScripts\\PistaSpawner.cs",
+              "RelativeToolTip": "Assets\\scripts\\SpawnScripts\\PistaSpawner.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T03:12:05.468Z"
+              "WhenOpened": "2025-11-12T11:47:29.258Z",
+              "EditorCaption": ""
             }
           ]
         }

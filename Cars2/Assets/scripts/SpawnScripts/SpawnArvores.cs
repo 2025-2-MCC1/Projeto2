@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class spawpista : MonoBehaviour
+public class ArvoresSpawn : MonoBehaviour
 {
     public GameObject pista;
     public GameObject spaw;
@@ -29,4 +29,3 @@ public class spawpista : MonoBehaviour
         }
     }
 }
-

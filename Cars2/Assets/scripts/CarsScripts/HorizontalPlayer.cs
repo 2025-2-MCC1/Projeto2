@@ -12,11 +12,11 @@ public class Horizontal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxisRaw("Horizontal") > 0)
+        if ((Input.GetAxisRaw("Horizontal") > 0) && transform.position.x == (11.46f))
         {
             transform.Translate(SideSpeed * Time.deltaTime, 0, 0);
         }
-        else if (Input.GetAxisRaw("Horizontal") < 0)
+        else if ((Input.GetAxisRaw("Horizontal") < 0) && transform.position.x == (-1.35f))
         {
             transform.Translate(-SideSpeed * Time.deltaTime, 0, 0);
         }
