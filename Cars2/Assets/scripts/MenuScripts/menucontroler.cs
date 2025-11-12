@@ -4,70 +4,68 @@ using UnityEngine.SceneManagement;
 
 public class menucontroler : MonoBehaviour
 {
+    [Header("Referências Visuais")]
     public VideoPlayer videoPlayer;
-    public GameObject menuopcoes, rawImage;
+    public GameObject rawImage;
     private Animator animatorRawImage;
+
+    [Header("Painéis")]
+    public GameObject menuopcoes;   // Painel principal (Start, Options, Quit)
+    public GameObject options;      // Painel de opções (volume, voltar)
     public GameObject titulo;
     public GameObject video;
 
-    [Header("Som de Parafusadeira")]
-    public AudioSource audioSource; // ← som dos botões
+    [Header("Sons")]
+    public AudioSource audioSource;
     public AudioClip somParafusadeira;
+    public AudioSource musicaFundo;
+    public AudioSource somMotorSource;
+    public AudioClip somMotor;
 
-    [Header("Música de Fundo")]
-    public AudioSource musicaFundo; // ← música ambiente do menu
-
-    [Header("Som de Aceleração (primeiro clique)")]
-    public AudioSource somMotorSource; // ← outro AudioSource
-    public AudioClip somMotor; // ← som de acelerar carro
-
-    private bool jaIniciou = false; // garante que só acontece uma vez
+    private bool jaIniciou = false;
 
     void Start()
     {
         rawImage.SetActive(false);
         animatorRawImage = rawImage.GetComponent<Animator>();
 
-        // Garante que nada toque antes da hora
+        // Início: mostra apenas o título
+        menuopcoes.SetActive(false);
+        options.SetActive(false);
+        titulo.SetActive(true);
+        video.SetActive(false);
+
         if (musicaFundo != null)
             musicaFundo.Stop();
-
-        if (somMotorSource != null)
-            somMotorSource.Stop();
     }
 
     void Update()
     {
-        // Só reage ao primeiro clique/tecla
         if (!jaIniciou && Input.anyKeyDown)
         {
             jaIniciou = true;
-
             rawImage.SetActive(true);
             animatorRawImage.SetTrigger("FadeIn");
             videoPlayer.Play();
+
+            // Mostra menu principal
             menuopcoes.SetActive(true);
             titulo.SetActive(false);
             video.SetActive(true);
 
-            // 🎵 Toca a música de fundo
             if (musicaFundo != null)
                 musicaFundo.Play();
 
-            // 🚗 Toca o som de aceleração
             if (somMotorSource != null && somMotor != null)
                 somMotorSource.PlayOneShot(somMotor);
         }
     }
 
-    // 🟢 Chamado pelo botão "Start Game"
     public void StartGame()
     {
-        // 🔧 Toca o som da parafusadeira
         if (audioSource && somParafusadeira)
             audioSource.PlayOneShot(somParafusadeira);
 
-        // Carrega a cena com atraso
         Invoke(nameof(CarregarCena), 0.5f);
     }
 
@@ -80,5 +78,33 @@ public class menucontroler : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("O jogo foi encerrado!");
+    }
+
+    // 🔹 Ao clicar em "Options" (botão do menu principal)
+    public void AbrirOpcoes()
+    {
+        if (audioSource && somParafusadeira)
+            audioSource.PlayOneShot(somParafusadeira);
+
+        // Esconde o menu principal e o vídeo
+        menuopcoes.SetActive(false);
+        video.SetActive(false);
+
+        // Mostra o painel de opções
+        options.SetActive(true);
+    }
+
+    // 🔹 Ao clicar em "Voltar" (botão dentro do painel Options)
+    public void VoltarMenuPrincipal()
+    {
+        if (audioSource && somParafusadeira)
+            audioSource.PlayOneShot(somParafusadeira);
+
+        // Esconde o painel de opções
+        options.SetActive(false);
+
+        // Mostra novamente o menu principal e o vídeo
+        menuopcoes.SetActive(true);
+        video.SetActive(true);
     }
 }

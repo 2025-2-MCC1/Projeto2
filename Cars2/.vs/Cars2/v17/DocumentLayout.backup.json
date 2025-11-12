@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\CarsScripts\\PlayerMov.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\scripts\\CarsScripts\\PlayerMov.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\GameOverScripts\\GameOverMenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\scripts\\GameOverScripts\\GameOverMenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\GameScripts\\PlayerCollision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\scripts\\GameScripts\\PlayerCollision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\MenuScripts\\Menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\scripts\\MenuScripts\\Menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerCollision.cs",
-              "DocumentMoniker": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\GameScripts\\PlayerCollision.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\GameScripts\\PlayerCollision.cs",
-              "ToolTip": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\GameScripts\\PlayerCollision.cs",
-              "RelativeToolTip": "Assets\\scripts\\GameScripts\\PlayerCollision.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "GameOverMenu.cs",
+              "DocumentMoniker": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\GameOverScripts\\GameOverMenu.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\GameOverScripts\\GameOverMenu.cs",
+              "ToolTip": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\GameOverScripts\\GameOverMenu.cs",
+              "RelativeToolTip": "Assets\\scripts\\GameOverScripts\\GameOverMenu.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T17:23:57.569Z",
+              "WhenOpened": "2025-11-12T03:12:44.162Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PlayerMov.cs",
-              "DocumentMoniker": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\CarsScripts\\PlayerMov.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\CarsScripts\\PlayerMov.cs",
-              "ToolTip": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\CarsScripts\\PlayerMov.cs",
-              "RelativeToolTip": "Assets\\scripts\\CarsScripts\\PlayerMov.cs",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAcwKwAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\MenuScripts\\Menu.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\MenuScripts\\Menu.cs",
+              "ToolTip": "C:\\Users\\Arthur\\Downloads\\Projeto2\\Cars2\\Assets\\scripts\\MenuScripts\\Menu.cs",
+              "RelativeToolTip": "Assets\\scripts\\MenuScripts\\Menu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T17:00:35.03Z",
+              "WhenOpened": "2025-11-12T03:12:05.468Z",
               "EditorCaption": ""
             }
           ]
