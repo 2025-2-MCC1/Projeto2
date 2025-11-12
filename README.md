@@ -17,9 +17,13 @@
 ## Descrição
 
 <p align="center">
-<img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" alt="NOME DO JOGO" border="0">
-  Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
-</p>
+<img <img width="898" height="508" alt="image" src="https://github.com/user-attachments/assets/ff74d86f-39d3-4bef-a367-5f5927091063" />
+ />
+
+  
+
+
+
 
 
 Traffic Fury é um jogo de arcade em 3D criado com Unity para computadores que faz com que o jogador assuma o controle em uma estrada expressa interminável e desestruturada. Como um condutor anônimo atolado em um tráfego sem fim, a meta é clara: resistir o mais que puder, desviando de automóveis em movimento incessante enquanto recolhe bidões de combustível para incrementar a pontuação.
@@ -34,8 +38,12 @@ Criado por um grupo de cinco integrantes, Traffic Fury proporciona uma vivência
 ## Projeto 2
 ## 🛠 • Estrutura de pastas
 
-📁 Documentos
 
+• 📁 Cars2
+
+• 📁 Documentos
+    
+    
     º 📁 Entrega 1
 
         • 📁 Algoritmo e Lógica de Programação
@@ -55,6 +63,28 @@ Criado por um grupo de cinco integrantes, Traffic Fury proporciona uma vivência
         • 📂 Back_end
 
         • 📂 Front_end
+
+        
+
+        º 📁 Entrega 2
+
+        • 📁 Algoritmo e Lógica de Programação
+
+        • 📁 Cálculo I
+
+        • 📁 Jogos Digitais e Sistemas Digitais Interativos
+
+        • 📁 Projeto Interdisciplinar - Jogos Digitais
+
+        • 📁 Ética e Pensamento Computacional
+
+🧩 Descrição Geral
+
+O projeto está dividido em duas grandes etapas (Entrega 1 e Entrega 2), cada uma organizada por disciplinas.
+Essa estrutura facilita o acompanhamento da evolução do trabalho e a integração entre as áreas envolvidas, como Algoritmos, Cálculo I, Ética e Jogos Digitais.
+
+A pasta src/ reúne todo o código-fonte do jogo, desenvolvido em Unity, enquanto documentos/ contém a documentação e os relatórios de cada entrega.
+As imagens e elementos visuais estão concentrados em imagens/, garantindo uma organização clara e intuitiva para navegação dentro do repositório.
 
 
 
