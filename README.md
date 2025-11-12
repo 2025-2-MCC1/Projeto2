@@ -8,7 +8,7 @@
 
 # Nome do Projeto: TRAFFIC FURY
 
-## Nome do Grupo
+## Nome do Grupo:  LYVORLAB
 
 ## Integrantes: Arthur Daher Franceschelli, Arthur Henrique dos Anjos Ferreira, Fernanda Figuereido Simoes, Ryan Santos, William Takuya Takeuchi Takaki
 
