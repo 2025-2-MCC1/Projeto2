@@ -78,6 +78,8 @@ Criado por um grupo de cinco integrantes, Traffic Fury proporciona uma vivência
 
         • 📁 Ética e Pensamento Computacional
 
+  • 📁 Imagens
+
 🧩 Descrição Geral
 
 O projeto está dividido em duas grandes etapas (Entrega 1 e Entrega 2), cada uma organizada por disciplinas.
