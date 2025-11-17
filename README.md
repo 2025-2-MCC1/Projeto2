@@ -106,7 +106,7 @@ Coloque código do prompt de comnando se for necessário
 <b>Windows:</b>
 
 Não há instalação! Apenas executável!
-Encontre o JOGO.exe na pasta executáveis e execute-o como qualquer outro programa.
+Apenas execute o arquivo Build Windows.zip disponível em documentos/Entrega 2/Jogos e Sistemas Interativos.
 
 ```sh
 Coloque código do prompt de comnando se for necessário
@@ -119,17 +119,20 @@ Encontre o index.html na pasta executáveis e execute-o como uma página WEB (at
 
 ## 💻 Configuração para Desenvolvimento
 
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
+-Unity 6000.0.38
 
-Para abrir este projeto você necessita das seguintes ferramentas:
+Clone o repositório:
 
--<a href="https://godotengine.org/download">GODOT</a>
+https://github.com/2025-2-MCC1/Projeto2
+Faça o seguinte passo a passo:
 
-```sh
-make install
-npm test
-Coloque código do prompt de comnando se for necessário
-```
+Abra/instale o Unity 6000.0.38f1: Clique em Open Project e selecione a pasta onde se encontra o projeto.
+ Configure a cena inicial: Assets>SCR>CENAS e abra a cena inicial (Menu).
+ Execute o jogo: Pressione o botão Play no editor do Unity.
+
+
+
+
 
 ## 📋 Licença/License
 Utilize o link <https://chooser-beta.creativecommons.org/> para fazer uma licença CC BY 4.0.
