@@ -80,31 +80,24 @@ public class menucontroler : MonoBehaviour
         Debug.Log("O jogo foi encerrado!");
     }
 
-    // 🔹 Ao clicar em "Options" (botão do menu principal)
+    // ---------------------------------------------------------
+    // 🔹 AGORA OPTIONS TROCA DE CENA!
+    // ---------------------------------------------------------
     public void AbrirOpcoes()
     {
         if (audioSource && somParafusadeira)
             audioSource.PlayOneShot(somParafusadeira);
 
-        // Esconde o menu principal e o vídeo
-        menuopcoes.SetActive(false);
-        video.SetActive(false);
-
-        // Mostra o painel de opções
-        options.SetActive(true);
+        // Carrega a cena de opções
+        SceneManager.LoadScene("OptionsScene");  // 🔥 troque pelo nome verdadeiro da sua cena
     }
 
-    // 🔹 Ao clicar em "Voltar" (botão dentro do painel Options)
+    // 🔹 Botão VOLTAR na outra cena de opções
     public void VoltarMenuPrincipal()
     {
         if (audioSource && somParafusadeira)
             audioSource.PlayOneShot(somParafusadeira);
 
-        // Esconde o painel de opções
-        options.SetActive(false);
-
-        // Mostra novamente o menu principal e o vídeo
-        menuopcoes.SetActive(true);
-        video.SetActive(true);
+        SceneManager.LoadScene("Menu");  // 🔥 coloque o nome da cena do menu
     }
 }
