@@ -141,9 +141,9 @@ Utilize o link <https://chooser-beta.creativecommons.org/> para fazer uma licen�
 
 Aqui estão as referências usadas no projeto.
 
-1. <https://github.com/iuricode/readme-template>
-2. <https://github.com/gabrieldejesus/readme-model>
-3. <https://chooser-beta.creativecommons.org/>
-4. <https://freesound.org/>
+1. <https://aistudio.google.com/>
+2. <https://chatgpt.com/?utm_source=google&utm_medium=paidsearch_brand&utm_campaign=GOOG_C_SEM_GBR_Core_CHT_BAU_ACQ_PER_MIX_ALL_LATAM_BR_EN_032525&utm_term=chatgpt&utm_content=179910864231&utm_ad=741817988297&utm_match=e&gad_source=1&gad_campaignid=22370592924&gbraid=0AAAAA-IW-UWqlZBiTdqzSQ3fYVSwZoXdh&gclid=Cj0KCQiArOvIBhDLARIsAPwJXOZUhJJaQsoJqU1IRD5B4QT-SEojv-9GzT5SFfpIuCxChWQrp-W2iTIaAv5_EALw_wcB](https://openai.com/pt-BR/>
+3. <https://www.youtube.com/watch?v=IQrmU_i6A8g&t=2988s>
+4. <https://docs.unity3d.com/6000.2/Documentation/Manual/UnityManual.html>
 5. <https://www.toptal.com/developers/gitignore>
-6. Músicas por: <a href="https://freesound.org/people/DaveJf/sounds/616544/"> DaveJf </a> e <a href="https://freesound.org/people/DRFX/sounds/338986/"> DRFX </a> ambas com Licença CC 0.
+6. Músicas por: <a https://elevenlabs.io/pt/sound-effects/car.
